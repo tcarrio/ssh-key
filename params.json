@@ -1,0 +1,6 @@
+{
+  "name": "SSH-Keygen Help",
+  "tagline": "",
+  "body": "SSH Keygen Tutorial\r\nhttps://www.guyrutenberg.com/2007/10/05/ssh-keygen-tutorial-generating-rsa-and-dsa-keys/\r\n\r\nSSH Key generation\r\nhttps://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/\r\n\r\nGeneral SSH Key help\r\nhttps://help.github.com/articles/generating-an-ssh-key/\r\n\r\nChecking version specific `ssh` manual\r\n```bash\r\nman ssh\r\nman ssh | grep \"authorized_keys\"\r\nman ssh | grep \"known_hosts\"\r\n#etc etc\r\n```\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
