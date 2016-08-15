@@ -1,8 +1,8 @@
 Table of Contents:
 
-1. [Checking for existings keys](#checking)
-2. [Generating a new SSH key](#generating)
-3. [Adding your SSH key to the ssh-agent](#adding)
+1. [Checking for existings keys](#checking-for-existing-ssh-keys)
+2. [Generating a new SSH key](#generating-a-new-ssh-key)
+3. [Adding your SSH key to the ssh-agent](#adding-your-ssh-key-to-the-ssh-agent)
 
 <a href="checking">Checking for existing SSH keys</a>
 ------------------------------
