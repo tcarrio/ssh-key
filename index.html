@@ -1,63 +1,117 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>SSH-Keygen Help by tcarrio</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <meta charset="UTF-8">
+    <title>SSH Configuration by tcarrio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/tcarrio/ssh-key">View On GitHub</a></li>
-        </nav>
-      </div><!-- end header -->
+    <section class="page-header">
+      <h1 class="project-name">SSH Configuration</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/tcarrio/ssh-key" class="btn">View on GitHub</a>
+      <a href="https://github.com/tcarrio/ssh-key/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/tcarrio/ssh-key/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <div class="wrapper">
+    <section class="main-content">
+      <p>Table of Contents:</p>
 
-      <section>
-        <div id="title">
-          <h1>SSH-Keygen Help</h1>
-          <p></p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/tcarrio">tcarrio</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+<ol>
+<li><a href="#checking-for-existing-ssh-keys">Checking for existings keys</a></li>
+<li><a href="#generating-a-new-ssh-key">Generating a new SSH key</a></li>
+<li><a href="#adding-your-ssh-key-to-the-ssh-agent">Adding your SSH key to the ssh-agent</a></li>
+</ol>
 
-        <p>SSH Keygen Tutorial
-<a href="https://www.guyrutenberg.com/2007/10/05/ssh-keygen-tutorial-generating-rsa-and-dsa-keys/">https://www.guyrutenberg.com/2007/10/05/ssh-keygen-tutorial-generating-rsa-and-dsa-keys/</a></p>
+<h2>
+<a id="checking-for-existing-ssh-keys" class="anchor" href="#checking-for-existing-ssh-keys" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Checking for existing SSH keys</h2>
 
-<p>SSH Key generation
-<a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/</a></p>
+<p>Before you generate an SSH key, you can check to see if you have any existing SSH keys.</p>
 
-<p>General SSH Key help
-<a href="https://help.github.com/articles/generating-an-ssh-key/">https://help.github.com/articles/generating-an-ssh-key/</a></p>
+<ol>
+<li><p>Open Git Bash.</p></li>
+<li>
+<p>Enter <code>ls -al ~/.ssh</code> to see if existing SSH keys are present:</p>
 
-<p>Checking version specific <code>ssh</code> manual</p>
+<div class="highlight highlight-source-shell"><pre>ls -al <span class="pl-k">~</span>/.ssh
+<span class="pl-c"># Lists the files in your .ssh directory, if they exist</span></pre></div>
+</li>
+<li><p>Check the directory listing to see if you already have a public SSH key.</p></li>
+</ol>
 
-<div class="highlight highlight-source-shell"><pre>man ssh
-man ssh <span class="pl-k">|</span> grep <span class="pl-s"><span class="pl-pds">"</span>authorized_keys<span class="pl-pds">"</span></span>
-man ssh <span class="pl-k">|</span> grep <span class="pl-s"><span class="pl-pds">"</span>known_hosts<span class="pl-pds">"</span></span>
-<span class="pl-c">#etc etc</span></pre></div>
+<p>By default, the filenames of the public keys are one of the following:</p>
 
-<p>A More Thorough `ssh-keygen` tutorial and explanation</p>
-<a href="https://www.guyrutenberg.com/2007/10/05/ssh-keygen-tutorial-generating-rsa-and-dsa-keys/">https://www.guyrutenberg.com/2007/10/05/ssh-keygen-tutorial-generating-rsa-and-dsa-keys/</a>
-      </section>
+<ul>
+<li>id_dsa.pub</li>
+<li>id_ecdsa.pub</li>
+<li>id_ed25519.pub</li>
+<li>id_rsa.pub</li>
+</ul>
 
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+<p>If you don't have an existing public and private key pair, or don't wish to use any that are available to connect to GitHub, then generate a new SSH key.
+If you see an existing public and private key pair listed (for example id_rsa.pub and id_rsa) that you would like to use to connect to GitHub, you can add your SSH key to the ssh-agent.</p>
 
+<p>After you've checked for existing SSH keys, you can generate a new SSH key to use for authentication, then add it to the ssh-agent.</p>
+
+<h2>
+<a id="generating-a-new-ssh-key" class="anchor" href="#generating-a-new-ssh-key" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Generating a new SSH key</h2>
+
+<ol>
+<li><p>Open Terminal.</p></li>
+<li>
+<p>Paste the text below, substituting in your GitHub email address.</p>
+
+<div class="highlight highlight-source-shell"><pre>ssh-keygen -t rsa -b 4096 -C <span class="pl-s"><span class="pl-pds">"</span>your_email@example.com<span class="pl-pds">"</span></span>
+<span class="pl-c"># Creates a new ssh key, using the provided email as a label</span>
+Generating public/private rsa key pair.</pre></div>
+</li>
+<li>
+<p>When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.</p>
+
+<div class="highlight highlight-source-shell"><pre>Enter a file <span class="pl-k">in</span> which to save the key (/Users/you/.ssh/id_rsa): [Press enter]</pre></div>
+</li>
+<li>
+<p>At the prompt, type a secure passphrase. For more information, see "Working with SSH key passphrases".</p>
+
+<div class="highlight highlight-source-shell"><pre>Enter passphrase (empty <span class="pl-k">for</span> no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]</pre></div>
+</li>
+</ol>
+
+<h2>
+<a id="adding-your-ssh-key-to-the-ssh-agent" class="anchor" href="#adding-your-ssh-key-to-the-ssh-agent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding your SSH key to the ssh-agent</h2>
+
+<p>Before adding a new SSH key to the ssh-agent, you should have checked for existing SSH keys and generated a new SSH key.</p>
+
+<ol>
+<li>
+<p>Ensure ssh-agent is enabled:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># start the ssh-agent in the background</span>
+<span class="pl-c1">eval</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-s"><span class="pl-pds">$(</span>ssh-agent -s<span class="pl-pds">)</span></span><span class="pl-pds">"</span></span>
+Agent pid 59566</pre></div>
+</li>
+<li>
+<p>Add your SSH key to the ssh-agent. If you used an existing SSH key rather than generating a new SSH key, you'll need to replace id_rsa in the command with the name of your existing private key file.</p>
+
+<div class="highlight highlight-source-shell"><pre>$ ssh-add <span class="pl-k">~</span>/.ssh/id_rsa</pre></div>
+
+<p>References: <a href="https://help.github.com/articles/generating-an-ssh-key/">Github: Generating an SSH key</a></p>
+</li>
+</ol>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/tcarrio/ssh-key">SSH Configuration</a> is maintained by <a href="https://github.com/tcarrio">tcarrio</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
   </body>
 </html>
