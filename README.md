@@ -4,7 +4,7 @@ Table of Contents:
 2. [Generating a new SSH key](#generating-a-new-ssh-key)
 3. [Adding your SSH key to the ssh-agent](#adding-your-ssh-key-to-the-ssh-agent)
 
-<a href="checking">Checking for existing SSH keys</a>
+Checking for existing SSH keys
 ------------------------------
 
 Before you generate an SSH key, you can check to see if you have any existing SSH keys.
@@ -33,7 +33,7 @@ If you see an existing public and private key pair listed (for example id_rsa.pu
 
 After you've checked for existing SSH keys, you can generate a new SSH key to use for authentication, then add it to the ssh-agent.
 
-<a href="generating">Generating a new SSH key</a>
+Generating a new SSH key
 -------------------------
 
 1. Open Terminal.
@@ -59,7 +59,7 @@ After you've checked for existing SSH keys, you can generate a new SSH key to us
   Enter same passphrase again: [Type passphrase again]
   ```
 
-<a href="adding">Adding your SSH key to the ssh-agent</a>
+Adding your SSH key to the ssh-agent
 ------------------------------------
 
 Before adding a new SSH key to the ssh-agent, you should have checked for existing SSH keys and generated a new SSH key.
