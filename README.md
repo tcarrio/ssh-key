@@ -77,5 +77,11 @@ Before adding a new SSH key to the ssh-agent, you should have checked for existi
   ```bash
   $ ssh-add ~/.ssh/id_rsa
   ```
+  If you will be using this for GitHub, continue. Otherwise, enjoy your new ssh key.
   
+  
+Adding your key to your GitHub Account
+--------------------------------------
+
+Visit [this GitHub article](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account). 
   References: [Github: Generating an SSH key](https://help.github.com/articles/generating-an-ssh-key/)
